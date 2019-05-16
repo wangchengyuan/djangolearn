@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>股票数据展示</title>
+    <style>
+        .content_header{
+            background-color: red;
+            width: 100%;
+            height: 50px;
+        }
+        .content_table{
+            margin-top: 20px;
+            margin-left: 17%;
+        }
+    </style>
+</head>
+<body>
+<div class="content_header">
+
+</div>
+<h1 align="center" style="color:red">股票数据</h1>
+<div class="content_table">
+    <table border="1" cellpadding="10">
+    <tr>
+        {% for stocktitle in stockdatatitles %}
+        <td>{{stocktitle}}</td>
+        {% endfor %}
+    </tr>
+    {% for stockdata in stockdatas%}
+    <tr>
+        {% for stock in stockdata %}
+        <td>{{stock}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+</div>
+</body>
+</html>

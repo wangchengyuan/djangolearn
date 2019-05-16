@@ -1,0 +1,63 @@
+# coding: utf-8
+from sqlalchemy import Column, DECIMAL, String, TIMESTAMP, text
+from sqlalchemy.dialects.mysql import DECIMAL, INTEGER, SMALLINT, TINYINT
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+metadata = Base.metadata
+
+
+class Order(Base):
+    __tablename__ = 'orders'
+
+    id = Column(INTEGER(11), primary_key=True)
+    order_no = Column(String(32), nullable=False, unique=True)
+    type = Column(SMALLINT(6), nullable=False, server_default=text("'1'"))
+    user_id = Column(INTEGER(11), nullable=False, index=True)
+    sku_id = Column(INTEGER(11), nullable=False)
+    sku_scheme_id = Column(INTEGER(11), nullable=False)
+    car_id = Column(INTEGER(11), nullable=False)
+    store_id = Column(INTEGER(11), nullable=False)
+    staff_id = Column(INTEGER(11), nullable=False)
+    audit_intent_id = Column(INTEGER(11), nullable=False)
+    address_id = Column(INTEGER(11), nullable=False)
+    status = Column(SMALLINT(6), nullable=False)
+    amount = Column(DECIMAL(15, 2), nullable=False, server_default=text("'0.00'"))
+    down_payment = Column(DECIMAL(15, 2), nullable=False, server_default=text("'0.00'"))
+    deposit = Column(DECIMAL(15, 2), nullable=False, server_default=text("'0.00'"))
+    break_amount = Column(DECIMAL(15, 2), nullable=False, server_default=text("'0.00'"))
+    tail = Column(DECIMAL(15, 2), nullable=False, server_default=text("'0.00'"))
+    capital = Column(DECIMAL(15, 2), nullable=False, server_default=text("'0.00'"))
+    discount = Column(DECIMAL(15, 2), nullable=False, server_default=text("'0.00'"))
+    interest = Column(DECIMAL(15, 2), nullable=False, server_default=text("'0.00'"))
+    per_amount = Column(DECIMAL(15, 2), nullable=False, server_default=text("'0.00'"))
+    rate = Column(DECIMAL(7, 4), nullable=False, server_default=text("'0.0000'"))
+    origin_rate = Column(DECIMAL(7, 4), nullable=False, server_default=text("'0.0000'"))
+    fenqi = Column(SMALLINT(4), nullable=False, server_default=text("'12'"))
+    order_from = Column(INTEGER(4), nullable=False, server_default=text("'1'"))
+    pay_area = Column(INTEGER(3), nullable=False, server_default=text("'0'"))
+    loan_area = Column(INTEGER(3), nullable=False, server_default=text("'0'"))
+    goods_info = Column(String(3000), nullable=False, server_default=text("''"))
+    is_finished = Column(TINYINT(3), nullable=False, server_default=text("'0'"))
+    remark = Column(String(2000), nullable=False, server_default=text("''"))
+    created_at = Column(TIMESTAMP, nullable=False, index=True, server_default=text("'1980-01-01 00:00:00'"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("'1980-01-01 00:00:00'"))
+    down_payment_type = Column(TINYINT(2), nullable=False, server_default=text("'1'"))
+    down_payment_status = Column(TINYINT(2), nullable=False, server_default=text("'0'"))
+    loan_rate = Column(DECIMAL(7, 2), nullable=False, server_default=text("'0.00'"))
+    loan_origin_rate = Column(DECIMAL(7, 2), nullable=False, server_default=text("'0.00'"))
+    loan_capital = Column(DECIMAL(15, 2), nullable=False, server_default=text("'0.00'"))
+    order_capital = Column(DECIMAL(10, 2), nullable=False, server_default=text("'0.00'"))
+    activity_vehicle_id = Column(INTEGER(11), nullable=False, server_default=text("'0'"))
+    is_refund = Column(TINYINT(1), nullable=False, server_default=text("'1'"))
+    pick_store_id = Column(INTEGER(11), nullable=False)
+    listing_store_id = Column(INTEGER(11), nullable=False)
+    pick_staff_id = Column(INTEGER(11), nullable=False)
+    purchase_source = Column(TINYINT(3), nullable=False, index=True, server_default=text("'2'"))
+    reservation_id = Column(INTEGER(11), nullable=False, server_default=text("'0'"))
+    sp_cooperation_programme = Column(TINYINT(3), nullable=False, server_default=text("'1'"))
+    sp_capital_amount = Column(DECIMAL(11, 2), nullable=False, server_default=text("'0.00'"))
+    sp_service_charge = Column(DECIMAL(11, 2), nullable=False, server_default=text("'0.00'"))
+    is_car_hailing = Column(TINYINT(4), nullable=False, server_default=text("'0'"))
+    platform_service_charge = Column(DECIMAL(10, 2), nullable=False, server_default=text("'0.00'"))
+    insurance_commission_rate = Column(DECIMAL(4, 4), nullable=False, server_default=text("'0.0000'"))
